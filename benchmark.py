@@ -73,8 +73,7 @@ def run_benchmark(concurrency: int, reps: int = 3):
 
 if __name__ == "__main__":
     import sys
-    #levels = [1, 5, 10, 50, 100]
-    levels = [1, 5]
+    levels = [1, 5, 10, 50, 100]
     if len(sys.argv) == 2:
         try:
             lvl = int(sys.argv[1])
