@@ -6,25 +6,25 @@ from concurrent.futures import ThreadPoolExecutor
 BASE_URL = "http://127.0.0.1:8080/v1/chat/completions"
 
 PROMPTS = [
-    "What is the capital of France?",
-    "Tell me a joke about computers.",
-    "List three animals that can fly.",
-    "What does CPU stand for?",
-    "Who painted the Mona Lisa?",
-    "How many continents are there?",
-    "What year did World War II end?",
-    "What's the square root of 144?",
-    "Name a programming language created in 1995.",
-    "What is LLaMA model?"
+    "Explain how the process of photosynthesis works and why it is essential for life on Earth.",
+    "What are the main causes and consequences of climate change in the 21st century?",
+    "Describe the architecture and training process of a modern large language model (LLM) like GPT-4.",
+    "Discuss the impact of social media on mental health, particularly among teenagers.",
+    "Compare and contrast capitalism and socialism as economic systems, including their pros and cons.",
+    "What were the key events and outcomes of the Cold War, and how did it shape the modern world?",
+    "How does the human brain process language, and what are some major theories in neurolinguistics?",
+    "What is quantum computing, and how does it differ from classical computing in terms of principles and applications?",
+    "Describe the plot, themes, and significance of George Orwell’s 1984 in the context of modern society.",
+    "How do vaccines work, and why are they considered one of the most important achievements in medical science?"
 ]
 
-def call_once(prompt: str, timeout=1500.0):
+def call_once(prompt: str, timeout=15000.0):
     payload = {
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user",   "content": prompt}
         ],
-        "max_tokens": 128,
+        "max_tokens": 4096,
         "temperature": 0.1,
         "stream": False
     }
