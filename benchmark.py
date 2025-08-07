@@ -65,6 +65,13 @@ def run_benchmark(concurrency: int, reps: int = 3):
     tok_per_sec = total_tokens / total_wall if total_wall else float("nan")
     req_per_sec = total_reqs / total_wall if total_wall else float("nan")
 
+    with open("log.txt", "a") as file:
+        file.write(f"\n→ Конкурентность: {concurrency} запросов\n")
+        file.write(f"  Ответов/с (req/s): {req_per_sec:.3f}\n")
+        file.write(f"  Токенов/с      (tok/s): {tok_per_sec:.1f}\n")
+        file.write(f"  Средняя задержка       : {avg_latency:.2f} s (≈{avg_latency*1000:.0f} ms)\n")
+        file.write(f"  Общее время wall-time  : {avg_wall:.2f} s\n")
+        file.write(f"  Всего токенов           : {total_tokens}\n\n")
     print(f"  Ответов/с (req/s): {req_per_sec:.3f}")
     print(f"  Токенов/с      (tok/s): {tok_per_sec:.1f}")
     print(f"  Средняя задержка       : {avg_latency:.2f} s (≈{avg_latency*1000:.0f} ms)")
